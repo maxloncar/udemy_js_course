@@ -45,15 +45,15 @@ const spain3 = percentageOfWorld3(47.42);
 // FUNCTIONS CALLING OTHER FUNCTIONS
 const describePopulation = (country, population) => `${country} has ${population} million people, which is about ${percentageOfWorld1(population)}% of the world.`
 
-console.log(describePopulation('Croatia', 3.8));
-console.log(describePopulation('Spain', 47.42));
-console.log(describePopulation('China', 1441));
+// console.log(describePopulation('Croatia', 3.8));
+// console.log(describePopulation('Spain', 47.42));
+// console.log(describePopulation('China', 1441));
 
 
 // INTRODUCTION TO ARRAYS
 const populations = [3.8, 47.42, 83.2, 1441]; // -> in millions
 
-console.log(populations.length === 4);
+// console.log(populations.length === 4);
 
 const percentages = [percentageOfWorld1(populations[0]), percentageOfWorld1(populations[1]), percentageOfWorld1(populations[2]), percentageOfWorld1(populations[populations.length - 1])];
 console.log(percentages);
@@ -61,39 +61,39 @@ console.log(percentages);
 
 // BASIC ARRAY OPERATIONS (METHODS)
 const neighbours = ['Slovenia', 'Hungary', 'Serbia', 'Bosnia and Herzegovina', 'Montenegro', 'Italy'];
-console.log(neighbours);
+// console.log(neighbours);
 
 neighbours.push('Utopia');
-console.log(neighbours);
+// console.log(neighbours);
 
 neighbours.pop();
-console.log(neighbours);
+// console.log(neighbours);
 
-if (!neighbours.includes('Germany')) {
-  console.log('Probably not a central European country :D');
-}
+// if (!neighbours.includes('Germany')) {
+//   console.log('Probably not a central European country :D');
+// }
  
 neighbours[neighbours.indexOf('Hungary')] = 'Republic of Hungary';
-console.log(neighbours);
+// console.log(neighbours);
 
 
 // INTRODUCTION TO OBJECTS
-const myCountry = {
-  country: 'Croatia',
-  capital: 'Zagreb',
-  language: 'croatian',
-  population: 3.8,
-  neighbours: ['Slovenia', 'Hungary', 'Serbia', 'Bosnia and Herzezgovina', 'Montenegro', 'Italy']
-};
+// const myCountry = {
+//   country: 'Croatia',
+//   capital: 'Zagreb',
+//   language: 'croatian',
+//   population: 3.8,
+//   neighbours: ['Slovenia', 'Hungary', 'Serbia', 'Bosnia and Herzezgovina', 'Montenegro', 'Italy']
+// };
 
 // DOT VS. BRACKET NOTATION
 // console.log(`${myCountry.country} has ${myCountry.population} million ${myCountry.language}-speaking people, ${myCountry.neighbours.length} neighbouring countries and a capital called ${myCountry.capital}.`);
 
-myCountry.population = myCountry.population + 2;
+// myCountry.population = myCountry.population + 2;
 // myCountry.population += 2;
 // console.log(myCountry.population);
 
-myCountry['population'] = myCountry['population'] - 2;
+// myCountry['population'] = myCountry['population'] - 2;
 // myCountry['population'] -= 2;
 // console.log(myCountry.population);
 
@@ -115,12 +115,24 @@ const myCountry = {
   }
 };
 
-myCountry.describe();
+// myCountry.describe();
 myCountry.checkIsland();
-console.log(myCountry);
-*/
+// console.log(myCountry);
+
 
 // ITERATION: THE FOR LOOP
-for (let vote = 1; vote <= 50; vote++) {
-  console.log(`Voter number ${vote} is currently voting`);
+// for (let vote = 1; vote <= 50; vote++) {
+//   console.log(`Voter number ${vote} is currently voting`);
+// }
+
+
+// LOOPING ARRAYS, BREAKING AND CONTINUING
+// const populations = [3.8, 47.42, 83.2, 1441]; // -> in millions
+const percentages2 = [];
+
+for (let i = 0; i < populations.length; i++) {
+  percentages2.push(percentageOfWorld1(populations[i]));
 }
+
+console.log(percentages2);
+*/

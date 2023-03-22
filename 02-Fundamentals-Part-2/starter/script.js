@@ -378,4 +378,55 @@ if (mark.BMI > john.BMI) {
 for (let rep = 1; rep <= 30; rep++) {
   console.log(`Lifting weights repetition ${rep}`);
 }
+
+
+// LOOPING ARRAYS, BREAKING AND CONTINUING
+const max = [
+  'Max',
+  'Lončar',
+  2023 - 1998,
+  'developer',
+  ['Kristijan', 'Stjepan', 'Tomislav'],
+  true
+];
+const types = [];
+
+// console.log(max[0]);
+// console.log(max[1]);
+// ...
+// console.log(max[4])
+// max[5] does NOT exis
+
+for (let i = 0; i < max.length; i++) {
+  // Reading from max array
+  console.log(max[i], typeof max[i]);
+
+  // Filling types array
+  // types[i] = typeof max[i];
+  types.push(typeof max[i]);
+}
+
+console.log(types);
+
+const years = [1998, 2008, 1968, 2020];
+const ages = [];
+
+for (let i = 0; i < years.length; i++) {
+  ages.push(2023 - years[i]);
+}
+
+console.log(ages);
+
+// Continue and break
+console.log('--- ONLY STRINGS ---');
+for (let i = 0; i < max.length; i++) {
+  if (typeof max[i] !== 'string') continue;
+  console.log(max[i], typeof max[i]);
+}
+
+console.log('--- BREAK WITH NUMBER ---');
+for (let i = 0; i < max.length; i++) {
+  if (typeof max[i] === 'number') break;
+  console.log(max[i], typeof max[i]);
+}
 */
