@@ -329,7 +329,7 @@ console.log(max.age);
 // Challenge
 // "Max is a 25-year old developer, and he has a/no driver's license"
 console.log(max.getSummary());
-*/
+
 
 // CODING CHALLENGE #3
 const mark = {
@@ -360,3 +360,22 @@ if (mark.BMI > john.BMI) {
 } else if (john.BMI > mark.BMI) {
   console.log(`${john.fullName}'s BMI (${john.BMI}) is higher than ${mark.fullName}'s (${mark.BMI})!`);
 }
+
+
+// ITERATION: THE FOR LOOP
+// console.log('Lifting weights repetition 1');
+// console.log('Lifting weights repetition 2');
+// console.log('Lifting weights repetition 3');
+// console.log('Lifting weights repetition 4');
+// console.log('Lifting weights repetition 5');
+// console.log('Lifting weights repetition 6');
+// console.log('Lifting weights repetition 7');
+// console.log('Lifting weights repetition 8');
+// console.log('Lifting weights repetition 9');
+// console.log('Lifting weights repetition 10');
+
+// for loop keeps running while condition is TRUE
+for (let rep = 1; rep <= 30; rep++) {
+  console.log(`Lifting weights repetition ${rep}`);
+}
+*/
