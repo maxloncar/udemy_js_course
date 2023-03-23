@@ -429,7 +429,7 @@ for (let i = 0; i < max.length; i++) {
   if (typeof max[i] === 'number') break;
   console.log(max[i], typeof max[i]);
 }
-*/
+
 
 // LOOPING BACKWARDS AND LOOPS IN LOOPS
 const max = [
@@ -455,3 +455,4 @@ for (let exercise = 1; exercise < 4; exercise++) {
     console.log(`Exercise ${exercise}: Lifting weight repetition ${rep}`);
   }
 }
+*/
