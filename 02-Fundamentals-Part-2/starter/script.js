@@ -475,7 +475,7 @@ while (dice !== 6) {
   dice = Math.trunc(Math.random() * 6) + 1
   if (dice === 6) console.log('Loop is about to end...');
 }
-*/
+
 
 // CODING CHALLENGE #4
 const bills = [
@@ -519,3 +519,4 @@ const calcAverage = (arr) => {
 };
 
 console.log(calcAverage(totals));
+*/
