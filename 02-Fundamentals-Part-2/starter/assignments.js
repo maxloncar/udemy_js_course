@@ -135,7 +135,7 @@ for (let i = 0; i < populations.length; i++) {
 }
 
 console.log(percentages2);
-*/
+
 
 // LOOPING BACKWARDS AND LOOPS IN LOOPS
 const listOfNeighbours = [
@@ -146,6 +146,20 @@ const listOfNeighbours = [
 
 for (let i = 0; i < listOfNeighbours.length; i++) {
   for (let j = 0; j < listOfNeighbours[i].length; j++) {
-    console.log(`Neighbour: ${listOfNeighbours[i][j]}`);
+    // console.log(`Neighbour: ${listOfNeighbours[i][j]}`);
   }
 }
+
+
+// THE WHILE LOOP
+// const populations = [3.8, 47.42, 83.2, 1441]; // -> in millions
+const percentages3 = [];
+
+let i = 0;
+while (i < populations.length) {
+  percentages3.push(percentageOfWorld1(populations[i]));
+  i++;
+}
+
+console.log(percentages3);
+*/
