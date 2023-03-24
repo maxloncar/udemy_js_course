@@ -69,7 +69,7 @@ const calcTempAmplitudeNew = (t1, t2) => {
 
 const amplitudeNew = calcTempAmplitudeNew([3, 5, 1], [9, -2, 5]);
 console.log(amplitudeNew);
-*/
+
 
 // DEBUGGING WITH THE CONSOLE AND BREAKPOINTS
 const measureKelvin = () => {
@@ -116,3 +116,31 @@ const calcTempAmplitudeBug = (t1, t2) => {
 const amplitudeBug = calcTempAmplitudeBug([3, 5, 1], [9, 4, 5]);
 // A) IDENTIFY
 console.log(amplitudeBug);
+*/
+
+// CODING CHALLENGE #1
+// 1) Understanding the problem
+// - Should we translate temperatures into strings?
+// - Should we store temperatures inside one variable?
+
+// 2) Breaking up into sub-problems
+// - Create a function with array as parameter
+// - Loop through array
+// - Store temperature values
+// - Console log a string with temperature values
+
+const data1 = [17, 21, 23];
+const data2 = [12, 5, -5, 0, 4];
+
+const printForecast = arr => {
+  let forecast = '...';
+
+  for (let i = 0; i < arr.length; i++) {
+    forecast += ` ${arr[i]}°C in ${i + 1} days ...`;
+  }
+
+  console.log(forecast);
+};
+
+printForecast(data1);
+printForecast(data2);
