@@ -38,7 +38,7 @@ const firstName = 'Max';
 calcAge(1996);
 // console.log(age);
 // printAge();
-*/
+
 
 // HOISTING AND TDZ IN PRACTICE
 // Variables
@@ -82,3 +82,42 @@ const z = 3;
 console.log(x === window.x);
 console.log(y === window.y);
 console.log(z === window.z);
+*/
+
+// THE THIS KEYWORD IN PRACTICE
+// console.log(this);
+
+const calcAge = function (birthYear) {
+  console.log(2023 - birthYear);
+  // console.log(this);
+};
+
+calcAge(1998);
+
+const calcAgeArrow = birthYear => {
+  console.log(2023 - birthYear);
+  // console.log(this); // lexical this keyword (parent's scope)
+};
+
+calcAgeArrow(1988);
+
+const max = {
+  year: 1998,
+  calcAge: function () {
+    console.log(this);
+    console.log(2023 - this.year);
+  },
+};
+
+max.calcAge();
+
+const matilda = {
+  year: 2017,
+};
+
+// method borrowing
+matilda.calcAge = max.calcAge;
+matilda.calcAge();
+
+const f = max.calcAge;
+f();
