@@ -54,6 +54,43 @@ const restaurant = {
   },
 };
 
+// SHORT CIRCUITING (&& AND ||)
+console.log('---------- OR ------------');
+// Use ANY data type, return ANY data type, short-circuiting ->
+// JavaScript ne gleda dalje ako je prva vrijednost true
+// OR vraca prvu true vrijednost
+// ako su sve vrijednosti false, vraca zadnju
+console.log(3 || 'Max');
+console.log('' || 'Max'); // guess: Max, answer: Max
+console.log(true || 0); // guess: true, answer: true
+console.log(undefined || null); // guess: false, answer: null
+
+console.log(undefined || 0 || '' || 'Hello' || 23 || null); // Hello
+
+restaurant.numGuests = 0;
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1);
+
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+console.log('---------- AND ------------');
+// JavaScript ne gleda dalje ako je prva vrijednost false
+// AND vraca prvu false vrijednost
+// ako su sve vrijednosti true, vraca zadnju
+console.log(0 && 'Max');
+console.log(7 && 'Max'); // Max
+
+console.log('Hello' && 23 && null && 'Max'); // null
+
+// Practical example
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushrooms', 'spinach');
+}
+
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+
+/*
 // REST PATTERN AND PARAMETERS
 // 1) Destructuring
 // SPREAD, because on RIGHT side of =
@@ -94,7 +131,7 @@ add(...x);
 restaurant.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
 restaurant.orderPizza('mushrooms');
 
-/*
+
 // THE SPREAD OPERATOR (...)
 const arr = [7, 8, 9];
 const badNewArr = [1, 2, arr[0], arr[1], arr[2]];
