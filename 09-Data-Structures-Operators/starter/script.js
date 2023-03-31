@@ -54,6 +54,16 @@ const restaurant = {
   },
 };
 
+// THE NULLISH COALESCING OPERATOR (??)
+restaurant.numGuests = 0;
+const guests = restaurant.numGuests || 10;
+console.log(guests);
+
+// Nullish: null and undefined (NOT 0 or '')
+const guestsCorrect = restaurant.numGuests ?? 10;
+console.log(guestsCorrect);
+
+/*
 // SHORT CIRCUITING (&& AND ||)
 console.log('---------- OR ------------');
 // Use ANY data type, return ANY data type, short-circuiting ->
@@ -90,7 +100,7 @@ if (restaurant.orderPizza) {
 
 restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
 
-/*
+
 // REST PATTERN AND PARAMETERS
 // 1) Destructuring
 // SPREAD, because on RIGHT side of =
