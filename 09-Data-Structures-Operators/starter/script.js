@@ -94,7 +94,37 @@ const game = {
     team2: 6.5,
   },
 };
+// SETS
+const ordersSet = new Set([
+  'Pasta',
+  'Pizza',
+  'Pizza',
+  'Risotto',
+  'Pasta',
+  'Pizza',
+]);
+console.log(ordersSet);
 
+console.log(ordersSet.size);
+console.log(ordersSet.has('Pizza'));
+console.log(ordersSet.has('Bread'));
+ordersSet.add('Garlic Bread');
+ordersSet.add('Garlic Bread');
+ordersSet.delete('Risotto');
+// ordersSet.clear();
+console.log(ordersSet);
+
+for (const order of ordersSet) console.log(order);
+
+// Example
+const staff = ['Waiter', 'Chef', 'Manager', 'Chef', 'Waiter'];
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+console.log(new Set(['Waiter', 'Chef', 'Manager', 'Chef', 'Waiter']).size);
+
+console.log(new Set('MaxLončar').size);
+
+/*
 // CODING CHALLENGE #2
 // 1)
 for (const [index, scorer] of game.scored.entries())
@@ -124,7 +154,7 @@ for (const player of game.scored) {
 }
 console.log(scorers);
 
-/*
+
 // CODING CHALLENGE #1
 // 1)
 const [players1, players2] = game.players;
