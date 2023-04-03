@@ -54,6 +54,18 @@ const restaurant = {
   },
 };
 
+// LOOPING ARRAYS: THE FOR-OF LOOP
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) console.log(item);
+
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
+
+// console.log([...menu.entries()]);
+
+/*
 // CODING CHALLENGE #1
 const game = {
   team1: 'Bayern Munich',
@@ -134,7 +146,7 @@ console.log(
     `${game.team2} is more likely to win!`
 );
 
-/*
+
 // LOGICAL ASSIGNMENT OPERATORS
 const rest1 = {
   name: 'Capri',
