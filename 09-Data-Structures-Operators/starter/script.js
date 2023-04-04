@@ -109,6 +109,19 @@ const gameEvents = new Map([
   [92, '🔶 Yellow card'],
 ]);
 
+// CODING CHALLENGE #4
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+const text = document.querySelector('textarea').value;
+
+const [firstWord, secondWord] = 'first_name'.split('_');
+const wholeWord = [
+  firstWord,
+  secondWord[0].toUpperCase() + secondWord.slice(1),
+].join('');
+console.log(wholeWord);
+
+/*
 // WORKING WITH STRINGS - PART 3
 // Split and join
 console.log('a+very+nice+string'.split('+'));
@@ -161,7 +174,7 @@ planesInLine(5);
 planesInLine(3);
 planesInLine(12);
 
-/*
+
 // WORKING WITH STRINGS - PART 2
 const airline = 'TAP Air Croatia';
 
