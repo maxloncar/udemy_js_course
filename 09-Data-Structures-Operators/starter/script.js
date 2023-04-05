@@ -112,14 +112,31 @@ const gameEvents = new Map([
 // CODING CHALLENGE #4
 document.body.append(document.createElement('textarea'));
 document.body.append(document.createElement('button'));
-const text = document.querySelector('textarea').value;
 
-const [firstWord, secondWord] = 'first_name'.split('_');
-const wholeWord = [
-  firstWord,
-  secondWord[0].toUpperCase() + secondWord.slice(1),
-].join('');
-console.log(wholeWord);
+document.querySelector('button').addEventListener('click', () => {
+  const text = document.querySelector('textarea').value;
+  const words = text.split('\n');
+
+  // for (let i = 0; i < words.length; i++) {
+  //   const [firstWord, secondWord] = words[i].trim().toLowerCase().split('_');
+  //   const wholeWord = [
+  //     firstWord,
+  //     secondWord[0].toUpperCase() + secondWord.slice(1),
+  //   ].join('');
+  //   console.log(`${wholeWord.padEnd(20)}${'✅ '.repeat(i + 1)}`);
+  // }
+
+  // OR
+
+  for (const [index, word] of words.entries()) {
+    const [firstWord, secondWord] = word.toLowerCase().trim().split('_');
+    const wholeWord = `${firstWord}${secondWord.replace(
+      secondWord[0],
+      secondWord[0].toUpperCase()
+    )}`;
+    console.log(`${wholeWord.padEnd(20)}${'✅ '.repeat(index + 1)}`);
+  }
+});
 
 /*
 // WORKING WITH STRINGS - PART 3
