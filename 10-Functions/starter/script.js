@@ -174,7 +174,7 @@ const bookEW = book.bind(eurowings);
 const bookLH = book.bind(lufthansa);
 const bookLX = book.bind(swiss);
 
-bookEW(23, 'Steven Williams');
+bookEW(234, 'Steven Williams');
 
 const bookEW23 = book.bind(eurowings, 23);
 bookEW23('Max Lončar');
@@ -203,4 +203,15 @@ const addVAT = addTax.bind(null, 0.23);
 console.log(addVAT(100));
 console.log(addVAT(23));
 
-// Challenge
+// Challenge - function returning function
+const addTaxRate = function (rate) {
+  return function (value) {
+    return value + value * rate;
+  };
+};
+
+const addVAT2 = addTaxRate(0.23);
+console.log(addVAT2(100));
+console.log(addVAT2(23));
+
+console.log(addTaxRate(0.15)(200));
