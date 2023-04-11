@@ -61,6 +61,26 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const displayMovements = movements => {
+  containerMovements.innerHTML = '';
+  // .textContent = 0
+
+  movements.forEach((mov, i) => {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
+
+    const html = `
+    <div class="movements__row">
+      <div class="movements__type movements__type--${type}">${
+      i + 1
+    } ${type}</div>
+      <div class="movements__value">${mov}</div>
+    </div>`;
+
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  });
+};
+displayMovements(account1.movements);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -142,7 +162,7 @@ movements.forEach(function (movement, index, array) {
 // 1: function(450)
 // 2: function(-400)
 // ...
-*/
+
 
 // FOREACH WITH MAPS AND SETS
 // Map
@@ -163,3 +183,6 @@ currenciesUnique.forEach(function (value, _, map) {
   // _ means throwable
   console.log(`${value}: ${value}`);
 });
+*/
+
+// CREATING DOM ELEMENTS
