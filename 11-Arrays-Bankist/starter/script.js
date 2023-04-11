@@ -81,6 +81,18 @@ const displayMovements = movements => {
 };
 displayMovements(account1.movements);
 
+const createUsernames = accs => {
+  accs.forEach(acc => {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+createUsernames(accounts);
+console.log(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -214,7 +226,7 @@ const checkDogs = (dogsJulia, dogsKate) => {
 checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
 console.log('------------------------------');
 checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
-*/
+
 
 // THE MAP METHOD
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -242,3 +254,4 @@ const movementDescriptions = movements.map(
 );
 
 console.log(movementDescriptions);
+*/
