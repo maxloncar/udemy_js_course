@@ -279,7 +279,7 @@ console.log(depositsFor);
 
 const withdrawals = movements.filter(mov => mov < 0);
 console.log(withdrawals);
-*/
+
 
 // THE REDUCE METHOD
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -303,3 +303,25 @@ const max = movements.reduce((acc, mov) => {
   else return mov;
 }, movements[0]);
 console.log(max);
+*/
+
+// CODING CHALLENGE #2
+const calcAverageHumanAge = ages => {
+  const humanAges = ages.map(dogAge =>
+    dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4
+  );
+  console.log(humanAges);
+
+  const adultDogs = humanAges.filter(humanAge => humanAge >= 18);
+  console.log(adultDogs);
+
+  const average = adultDogs.reduce((acc, age) => acc + age, 0);
+
+  // OR
+  // 2 3. (2+3)/2 = 2.5 === 2/2+3/2 = 2.5
+
+  return average / adultDogs.length;
+};
+
+console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
+console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
