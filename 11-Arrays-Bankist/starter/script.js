@@ -492,7 +492,7 @@ console.log(account);
 for (const account of accounts) {
   if (account.owner === 'Jessica Davis') console.log(account);
 }
-*/
+
 
 // SOME AND EVERY
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
@@ -516,3 +516,24 @@ const deposit = mov => mov > 0;
 console.log(movements.some(deposit));
 console.log(movements.every(deposit));
 console.log(movements.filter(deposit));
+*/
+
+// FLAT AND FLATMAP
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat());
+
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(arrDeep.flat(2));
+
+// flat
+const overalBalance = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overalBalance);
+
+// flatMap
+const overalBalance2 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overalBalance2);
