@@ -615,7 +615,7 @@ labelBalance.addEventListener('click', function () {
   // const movementsUI2 = [...document.querySelectorAll('.movements__value')];
   // console.log(movementsUI2);
 });
-*/
+
 
 // ARRAY METHODS PRACTICE
 // 1.
@@ -672,3 +672,69 @@ const convertTitleCase = function (title) {
 console.log(convertTitleCase('this is a nice title'));
 console.log(convertTitleCase('this is a LONG title, but not too long'));
 console.log(convertTitleCase('and here is another title with an EXAMPLE'));
+*/
+
+// CODING CHALLENGE #4
+const dogs = [
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] },
+];
+
+// 1.
+dogs.forEach(dog => {
+  dog.recommendedFood = dog.weight ** 0.75 * 28;
+});
+console.log(dogs);
+
+// 2.
+dogs.forEach(dog => {
+  if (dog.owners.includes('Sarah')) {
+    console.log(
+      `Sarah's dog is eating too ${
+        dog.curFood > dog.recommendedFood ? 'much' : 'little'
+      }.`
+    );
+  }
+});
+
+// 3.
+const ownersEatTooMuch = dogs
+  .filter(dog => dog.curFood > dog.recommendedFood)
+  .flatMap(dog => dog.owners);
+console.log(ownersEatTooMuch);
+
+const ownersEatTooLittle = dogs
+  .filter(dog => dog.curFood < dog.recommendedFood)
+  .flatMap(dog => dog.owners);
+console.log(ownersEatTooLittle);
+
+// 4.
+console.log(`${ownersEatTooMuch.join(' and ')}'s dogs eat too much!`);
+console.log(`${ownersEatTooLittle.join(' and ')}'s dogs eat too little!`);
+
+// 5.
+dogs.forEach(dog => console.log(dog.curFood === dog.recommendedFood));
+
+// 6.
+const checkIfFoodAmountIsOkay = function (dog) {
+  return (
+    dog.curFood > dog.recommendedFood * 0.9 &&
+    dog.curFood < dog.recommendedFood + 1.1
+  );
+};
+
+dogs.forEach(dog => console.log(checkIfFoodAmountIsOkay(dog)));
+
+// .7
+const dogsEatingOkayAmountOfFood = dogs.filter(dog =>
+  checkIfFoodAmountIsOkay(dog)
+);
+console.log(...dogsEatingOkayAmountOfFood);
+
+// 8.
+const dogsCopy = dogs.map(dog => dog);
+
+console.log(dogs);
+console.log(dogsCopy);
