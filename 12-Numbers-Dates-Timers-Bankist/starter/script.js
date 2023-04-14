@@ -360,7 +360,7 @@ labelBalance.addEventListener('click', function () {
     if (i % 3 === 0) row.style.backgroundColor = 'blue';
   });
 });
-*/
+
 
 // NUMERIC SEPARATORS
 // 287,460,000,000
@@ -378,3 +378,35 @@ console.log(PI);
 
 console.log(Number('230_000')); // NaN
 console.log(parseInt('230_000')); // 230
+*/
+
+// WORKING WITH BIGINT
+console.log(2 ** 53 - 1);
+console.log(Number.MAX_SAFE_INTEGER);
+console.log(2 ** 53 + 1);
+console.log(2 ** 53 + 2);
+console.log(2 ** 53 + 3);
+console.log(2 ** 53 + 4);
+
+console.log(5091285901590109581098918591n);
+console.log(BigInt(5091285901));
+
+// Operations
+console.log(10000n + 10000n);
+console.log(918591085789017178165798169876n * 10000000n);
+// console.log(Math.sqrt(16n));
+
+const huge = 87914798164899184141414151n;
+const num = 17;
+console.log(huge * BigInt(num));
+
+console.log(20n > 15);
+console.log(20n === 20);
+console.log(typeof 20n);
+console.log(20n == '20');
+
+console.log(huge + ' is REALLY big!!!');
+
+// Divisions
+console.log(11n / 3n);
+console.log(10 / 3);
