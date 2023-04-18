@@ -30,6 +30,7 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+/*
 // SELECTING, CREATING, AND DELETING ELEMENTS
 // Selecting elements
 console.log(document.documentElement);
@@ -116,3 +117,44 @@ logo.classList.contains('c'); // not includes
 
 // Don't use
 logo.className = 'max';
+*/
+
+// IMPLEMENTING SMOOTH SCROLLING
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  console.log(s1coords);
+
+  console.log(e.target.getBoundingClientRect());
+
+  console.log(
+    'Current scroll (X/Y) - deprecated',
+    window.pageXOffset,
+    window.pageYOffset
+  );
+  console.log('Current scroll (X/Y)', window.scrollX, window.scrollY);
+
+  // clientWidth and clientHeight - not countinh scrollbars, only viewport dimensions
+  console.log(
+    'height/width viewport',
+    document.documentElement.clientHeight,
+    document.documentElement.clientWidth
+  );
+
+  // Scrolling
+  // pageXOffset and pageYOffset are deprecated
+  // window.scrollTo(
+  //   s1coords.left + window.scrollX,
+  //   s1coords.top + window.scrollY
+  // );
+
+  // window.scrollTo({
+  //   left: s1coords.left + window.scrollX,
+  //   top: s1coords.top + window.scrollY,
+  //   behavior: 'smooth',
+  // });
+
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
