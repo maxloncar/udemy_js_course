@@ -471,3 +471,21 @@ console.log(h1.parentElement.children);
   if (el !== h1) el.style.transform = 'scale(0.5)';
 });
 */
+
+// LIFECYCLE DOM EVENTS
+// Waiting only for HTML and JS to load
+document.addEventListener('DOMContentLoaded', function (e) {
+  console.log('HTML parsed and DOM tree built!', e);
+});
+
+// Waiting for HTML, images and all external resources (whole page) to load
+window.addEventListener('load', function (e) {
+  console.log('Page fully loaded', e);
+});
+
+// Created immediately before user is about to leave the page
+// window.addEventListener('beforeunload', function (e) {
+//   e.preventDefault();
+//   console.log(e);
+//   e.returnValue = '';
+// });
