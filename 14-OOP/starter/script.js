@@ -25,3 +25,28 @@ const jack = new Person('Jack', 1995);
 console.log(matilda, jack);
 
 console.log(max instanceof Person);
+
+// PROTOTYPES
+console.log(Person.prototype);
+
+Person.prototype.calcAge = function () {
+  console.log(2023 - this.birthYear);
+};
+
+max.calcAge();
+matilda.calcAge();
+
+console.log(max.__proto__);
+console.log(max.__proto__ === Person.prototype);
+
+console.log(Person.prototype.isPrototypeOf(max));
+console.log(Person.prototype.isPrototypeOf(matilda));
+console.log(Person.prototype.isPrototypeOf(Person));
+
+// .prototypeOfLinkedObjects
+
+Person.prototype.species = 'Homo Sapiens';
+console.log(max.species, matilda.species);
+
+console.log(max.hasOwnProperty('firstName'));
+console.log(max.hasOwnProperty('species'));
