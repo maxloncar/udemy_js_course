@@ -50,3 +50,30 @@ console.log(max.species, matilda.species);
 
 console.log(max.hasOwnProperty('firstName'));
 console.log(max.hasOwnProperty('species'));
+
+// PROTOTYPAL INHERITANCE ON BUILT-IN OBJECTS
+console.log(max.__proto__);
+// Object.prototype (top of prototype chain)
+console.log(max.__proto__.__proto__);
+console.log(max.__proto__.__proto__.__proto__);
+
+console.dir(Person.prototype.constructor);
+
+const arr = [3, 6, 4, 6, 14, 651, 3, 6]; // new Array === []
+console.log(arr.__proto__);
+console.log(arr.__proto__ === Array.prototype);
+
+console.log(arr.__proto__.__proto__);
+
+Array.prototype.unique = function () {
+  return [...new Set(this)];
+};
+
+console.log(arr.unique());
+
+const h1 = document.querySelector('h1');
+console.log(
+  h1.__proto__.__proto__.__proto__.__proto__.__proto__.__proto__.__proto__
+); // 6 levels of prototypal inheritance (7th is null)
+
+console.dir(x => x + 1);
