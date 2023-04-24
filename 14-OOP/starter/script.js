@@ -1,5 +1,6 @@
 'use strict';
 
+/*
 // CONSTRUCTOR FUNCTIONS AND THE NEW OPERATOR
 const Person = function (firstName, birthYear) {
   // Instance properties
@@ -77,3 +78,32 @@ console.log(
 ); // 6 levels of prototypal inheritance (7th is null)
 
 console.dir(x => x + 1);
+*/
+
+// CODING CHALLENGE #1
+const Car = function (make, speed) {
+  this.make = make;
+  this.speed = speed; // current speed in km/h
+};
+
+Car.prototype.accelerate = function () {
+  this.speed += 10;
+  console.log(this.speed);
+};
+
+Car.prototype.brake = function () {
+  this.speed -= 5;
+  console.log(this.speed);
+};
+
+const bmw = new Car('BMW', 120);
+const mercedes = new Car('Mercedes', 95);
+
+bmw.accelerate();
+mercedes.accelerate();
+
+bmw.brake();
+mercedes.brake();
+
+bmw.accelerate();
+mercedes.accelerate();
