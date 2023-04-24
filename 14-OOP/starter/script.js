@@ -1,6 +1,5 @@
 'use strict';
 
-/*
 // CONSTRUCTOR FUNCTIONS AND THE NEW OPERATOR
 const Person = function (firstName, birthYear) {
   // Instance properties
@@ -26,6 +25,14 @@ const jack = new Person('Jack', 1995);
 console.log(matilda, jack);
 
 console.log(max instanceof Person);
+
+// Static method
+Person.hey = function () {
+  console.log('Hey there ✋');
+  console.log(this);
+};
+
+Person.hey();
 
 // PROTOTYPES
 console.log(Person.prototype);
@@ -79,7 +86,6 @@ console.log(
 
 console.dir(x => x + 1);
 
-
 // CODING CHALLENGE #1
 const Car = function (make, speed) {
   this.make = make;
@@ -107,7 +113,6 @@ mercedes.brake();
 
 bmw.accelerate();
 mercedes.accelerate();
-*/
 
 // ES6 CLASSES
 // class expression
@@ -120,8 +125,8 @@ class PersonCl {
     this.birthYear = birthYear;
   }
 
+  // Instance methods
   // Methods will be added to .prototype property
-
   calcAge() {
     console.log(2023 - this.birthYear);
   }
@@ -144,19 +149,25 @@ class PersonCl {
   get fullName() {
     return this._fullName;
   }
+
+  // Static method
+  static hey() {
+    console.log('Hey there ✋');
+    console.log(this);
+  }
 }
 
-const max = new PersonCl('Max Lončar', 1998);
-console.log(max);
-max.calcAge();
-console.log(max.age);
+const max2 = new PersonCl('Max Lončar', 1998);
+console.log(max2);
+max2.calcAge();
+console.log(max2.age);
 
-console.log(max.__proto__ === PersonCl.prototype);
+console.log(max2.__proto__ === PersonCl.prototype);
 
 // PersonCl.prototype.greet = function () {
 //   console.log(`Hey ${this.firstName}`);
 // };
-max.greet();
+max2.greet();
 
 // 1. Classes are NOT hoisted
 // 2. Classes are first-class citizes
@@ -164,6 +175,9 @@ max.greet();
 
 const walter = new PersonCl('Walter White', 1965);
 
+PersonCl.hey();
+
+/*
 // SETTERS AND GETTERS
 const account = {
   owner: 'max',
@@ -182,3 +196,4 @@ console.log(account.latest);
 
 account.latest = 50;
 console.log(account.movements);
+*/
