@@ -78,7 +78,7 @@ console.log(
 ); // 6 levels of prototypal inheritance (7th is null)
 
 console.dir(x => x + 1);
-*/
+
 
 // CODING CHALLENGE #1
 const Car = function (make, speed) {
@@ -107,3 +107,42 @@ mercedes.brake();
 
 bmw.accelerate();
 mercedes.accelerate();
+*/
+
+// ES6 Classes
+
+// class expression
+// const PersonCl = class {}
+
+//class declaration
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+
+  // Methods will be added to .prototype property
+
+  calcAge() {
+    console.log(2023 - this.birthYear);
+  }
+
+  greet() {
+    console.log(`Hey ${this.firstName}`);
+  }
+}
+
+const max = new PersonCl('Max', 1998);
+console.log(max);
+max.calcAge();
+
+console.log(max.__proto__ === PersonCl.prototype);
+
+// PersonCl.prototype.greet = function () {
+//   console.log(`Hey ${this.firstName}`);
+// };
+max.greet();
+
+// 1. Classes are NOT hoisted
+// 2. Classes are first-class citizes
+// 3. Classes are executed in strict-mode
