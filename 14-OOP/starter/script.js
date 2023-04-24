@@ -109,15 +109,14 @@ bmw.accelerate();
 mercedes.accelerate();
 */
 
-// ES6 Classes
-
+// ES6 CLASSES
 // class expression
 // const PersonCl = class {}
 
 //class declaration
 class PersonCl {
-  constructor(firstName, birthYear) {
-    this.firstName = firstName;
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
     this.birthYear = birthYear;
   }
 
@@ -130,11 +129,27 @@ class PersonCl {
   greet() {
     console.log(`Hey ${this.firstName}`);
   }
+
+  get age() {
+    return 2023 - this.birthYear;
+  }
+
+  // Set a property that already exists
+  set fullName(name) {
+    console.log(name);
+    if (name.includes(' ')) this._fullName = name;
+    else alert(`${name} is not a full name!`);
+  }
+
+  get fullName() {
+    return this._fullName;
+  }
 }
 
-const max = new PersonCl('Max', 1998);
+const max = new PersonCl('Max Lončar', 1998);
 console.log(max);
 max.calcAge();
+console.log(max.age);
 
 console.log(max.__proto__ === PersonCl.prototype);
 
@@ -146,3 +161,24 @@ max.greet();
 // 1. Classes are NOT hoisted
 // 2. Classes are first-class citizes
 // 3. Classes are executed in strict-mode
+
+const walter = new PersonCl('Walter White', 1965);
+
+// SETTERS AND GETTERS
+const account = {
+  owner: 'max',
+  movements: [200, 540, 120, 300],
+
+  get latest() {
+    return this.movements.slice(-1).pop();
+  },
+
+  set latest(mov) {
+    this.movements.push(mov);
+  },
+};
+
+console.log(account.latest);
+
+account.latest = 50;
+console.log(account.movements);
