@@ -284,7 +284,7 @@ Student.prototype = Object.create(Person.prototype);
 
 Student.prototype.introduce = function () {
   console.log(
-    `My name is ${this.firstName} and I study ${(this, this.course)}`
+    `My name is ${this.firstName} and I study ${(this.course)}`
   );
 };
 
@@ -345,7 +345,7 @@ tesla.accelerate();
 tesla.accelerate();
 tesla.brake();
 tesla.accelerate();
-*/
+
 
 // INHERITANCE BETWEEN "CLASSES": ES5 CLASSES
 class PersonCl {
@@ -390,9 +390,7 @@ class StudentCl extends PersonCl {
   }
 
   introduce() {
-    console.log(
-      `My name is ${this.fullName} and I study ${(this, this.course)}`
-    );
+    console.log(`My name is ${this.fullName} and I study ${this.course}`);
   }
 
   calcAge() {
@@ -409,3 +407,35 @@ class StudentCl extends PersonCl {
 const pero = new StudentCl('Pero Perić', 2000, 'Computer Science');
 pero.introduce();
 pero.calcAge();
+*/
+
+// INHERITANCE BETWEEN "CLASSES": OBJECT.CREATE
+const PersonProto = {
+  calcAge() {
+    console.log(2023 - this.birthYear);
+  },
+
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
+
+const steven = Object.create(PersonProto);
+
+const StudentProto = Object.create(PersonProto);
+StudentProto.init = function (firstName, birthYear, course) {
+  PersonProto.init.call(this, firstName, birthYear);
+  this.course = course;
+};
+
+StudentProto.introduce = function () {
+  console.log(
+    `My name is ${this.firstName} and I study ${(this, this.course)}`
+  );
+};
+
+const jure = Object.create(StudentProto);
+jure.init('Jure', 1996, 'Computer Science');
+jure.introduce();
+jure.calcAge();
