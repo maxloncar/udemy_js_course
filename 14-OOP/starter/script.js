@@ -439,7 +439,7 @@ const jure = Object.create(StudentProto);
 jure.init('Jure', 1996, 'Computer Science');
 jure.introduce();
 jure.calcAge();
-*/
+
 
 // ANOTHER CLASS EXAMPLE, ENCAPSULATION: PROTECTED PROPERTIES AND METHODS & ENCAPSULATION: PRIVATE CLASS FIELDS AND METHODS
 
@@ -476,10 +476,12 @@ class Account {
 
   deposit(val) {
     this.#movements.push(val);
+    return this;
   }
 
   withdraw(val) {
     this.deposit(-val);
+    return this;
   }
 
   requestLoan(val) {
@@ -487,6 +489,7 @@ class Account {
     if (this._approveLoan(val)) {
       this.deposit(val);
       console.log(`Loan approved`);
+      return this;
     }
   }
 
@@ -512,8 +515,73 @@ acc1.withdraw(140);
 acc1.requestLoan(1000);
 console.log(acc1.getMovements());
 console.log(acc1);
+Account.helper();
 
 // console.log(acc1.#movements);
 // console.log(acc1.#pin);
 // console.log(acc1.#approveLoan(100));
-Account.helper();
+
+//CHAINING METHODS
+acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000);
+console.log(acc1.getMovements());
+*/
+
+// CODING CHALLENGE #4
+class CarCl {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+
+  accelerate() {
+    this.speed += 10;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+  }
+
+  brake() {
+    this.speed -= 5;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+    return this;
+  }
+
+  get speedUS() {
+    return this.speed / 1.6;
+  }
+
+  set speedUS(speed) {
+    this.speed = speed * 1.6;
+  }
+}
+
+class EVCl extends CarCl {
+  #charge;
+
+  constructor(make, speed, charge) {
+    super(make, speed);
+    this.#charge = charge;
+  }
+
+  chargeBattery(chargeTo) {
+    this.#charge = chargeTo;
+    return this;
+  }
+
+  accelerate() {
+    this.speed += 20;
+    this.#charge--;
+    console.log(
+      `${this.make} going at ${this.speed} km/h, with a charge of ${
+        this.#charge
+      }%`
+    );
+    return this;
+  }
+}
+
+const rivian = new EVCl('Rivian', 120, 23);
+// rivian.chargeBattery(90);
+// rivian.accelerate();
+// rivian.accelerate();
+// rivian.brake();
+rivian.chargeBattery(90).accelerate().accelerate().brake();
+console.log(rivian.speedUS);
