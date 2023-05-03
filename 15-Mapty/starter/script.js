@@ -77,6 +77,8 @@ class Cycling extends Workout {
 // Application Architecture
 class App {
   #map;
+  #marker;
+  #markers = new L.FeatureGroup();
   #mapZoomLevel = 13;
   #mapEvent;
   #workouts = [];
@@ -92,6 +94,7 @@ class App {
     form.addEventListener('submit', this._newWorkout.bind(this));
     inputType.addEventListener('change', this._toggleElevationField);
     containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
+    containerWorkouts.addEventListener('click', this._deleteWorkout.bind(this));
   }
 
   _getPosition() {
@@ -206,8 +209,8 @@ class App {
   }
 
   _renderWorkoutMarker(workout) {
-    L.marker(workout.coords)
-      .addTo(this.#map)
+    this.#marker = L.marker(workout.coords)
+      .addTo(this.#markers)
       .bindPopup(
         L.popup({
           maxWidth: 250,
@@ -219,8 +222,13 @@ class App {
       )
       .setPopupContent(
         `${workout.type === 'running' ? '🏃‍♂️' : '🚴‍♀️'} ${workout.description}`
-      )
-      .openPopup();
+      );
+
+    this.#marker.openPopup();
+
+    console.log(this.#marker);
+
+    this.#markers.addTo(this.#map);
   }
 
   _renderWorkout(workout) {
@@ -252,6 +260,8 @@ class App {
           <span class="workout__value">${workout.cadence}</span>
           <span class="workout__unit">spm</span>
         </div>
+        <button class="workout__btn--edit">EDIT</button>
+        <button class="workout__btn--delete">DELETE</button>
       </li>`;
     }
 
@@ -267,6 +277,8 @@ class App {
           <span class="workout__value">${workout.elevationGain}</span>
           <span class="workout__unit">m</span>
         </div>
+        <button class="workout__btn--edit">EDIT</button>
+        <button class="workout__btn--delete">DELETE</button>
       </li>`;
     }
 
@@ -307,6 +319,35 @@ class App {
     this.#workouts.forEach(work => {
       this._renderWorkout(work);
     });
+  }
+
+  _deleteWorkout(e) {
+    if (e.target.classList.contains('workout__btn--delete')) {
+      const workout = e.target.closest('.workout');
+
+      if (!workout) return;
+
+      const workoutDelete = this.#workouts.find(
+        work => work.id === workout.dataset.id
+      );
+
+      this.#marker = L.marker(workoutDelete.coords);
+
+      this.#map.removeLayer(this.#marker);
+
+      this.#markers.eachLayer(layer => {
+        if (
+          layer.getLatLng().lat === this.#marker.getLatLng().lat &&
+          layer.getLatLng().lng === this.#marker.getLatLng().lng
+        ) {
+          this.#map.removeLayer(layer);
+        }
+      });
+
+      this.#workouts.splice(workoutDelete, 1);
+      workout.remove();
+      localStorage.setItem('workouts', JSON.stringify(this.#workouts));
+    }
   }
 
   reset() {
